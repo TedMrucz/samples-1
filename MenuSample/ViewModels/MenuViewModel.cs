@@ -35,8 +35,8 @@ namespace MenuSample.ViewModels
         private ObservableCollection<MenuOption> menus = new ObservableCollection<MenuOption>();
         public ObservableCollection<MenuOption> Menus
         {
-            set { menus = value; OnPropertyChanged("Menus"); }
             get { return menus; }
+            set { SetProperty(ref menus, value); }
         }
     }
 }
