@@ -10,14 +10,14 @@ namespace AdornerTest
         public string LegendItem
         {
             get { return legendItem; }
-            set { legendItem = value;  OnPropertyChanged(() => LegendItem); }
+            set { SetProperty(ref legendItem, value); }
         }
 
         private ObservableCollection<string> legendItems = new ObservableCollection<string>();
         public ObservableCollection<string> LegendItems
         {
             get { return legendItems; }
-            set { legendItems = value; OnPropertyChanged(() => LegendItems); }
+            set { SetProperty(ref legendItems, value); }
         }
 
         public DelegateCommand AddCommand { get; set; }
