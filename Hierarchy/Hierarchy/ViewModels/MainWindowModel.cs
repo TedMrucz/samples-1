@@ -13,6 +13,8 @@ using Hierarchy.Models;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Hierarchy.ViewModels
 {
@@ -85,17 +87,51 @@ namespace Hierarchy.ViewModels
             var data = JsonConvert.SerializeObject(items);
 
             var tree = JsonConvert.DeserializeObject<TreeItem>(data);
+
+            string json = File.ReadAllText("data.json");
+            var roles = JsonConvert.DeserializeObject<IList<Role>>(json);
+            foreach (Role f in roles)
+            {
+                //Console.WriteLine("{0} {1} {2}", f.Key, f.Value.Name, f.Value.Hash);
+            }
         }
 
         private void SortString()
         {
             string input = "sfwefuv8e";
-            var output = input.ToArray().OrderBy(p => p);
+            var ret = new String(input.OrderBy(c => c).ToArray());
 
         }
 
         /// /////////////////////////////////////////////////////////////////////
         /// /////////////////////////////////////////////////////////////////////
         /// /////////////////////////////////////////////////////////////////////
+        /// 
+
+    }
+
+    public partial class Role
+    {
+        public Role()
+        {
+            Participants = new HashSet<Participant>();
+        }
+        [JsonProperty(PropertyName = "id")]
+        public int Id { get; set; }
+
+        [StringLength(255), JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
+
+        [StringLength(255), JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Participant> Participants { get; set; }
+    }
+
+    public partial class Participant
+    {
+        [JsonProperty(PropertyName = "id")]
+        public int Id { get; set; }
+
     }
 }
