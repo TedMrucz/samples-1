@@ -24,8 +24,6 @@ namespace Hierarchy.ViewModels
         {
             Model = model;
             Items = model.Items;
-            //((ContentControl)view).DataContext = this;
-            //Content = (ContentControl)view;
         }
     }
 }
