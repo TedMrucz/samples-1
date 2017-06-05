@@ -12,7 +12,7 @@ namespace MenuSample.Models
         }
 
         private string option;
-        public string Option { get { return option; } set { option = value; base.OnPropertyChanged(() => this.Option); } }
+        public string Option { get { return option; } set { SetProperty(ref option, value); } }
     }
 }
 
