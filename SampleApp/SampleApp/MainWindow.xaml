@@ -1,0 +1,9 @@
+﻿<Window x:Class="SampleApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SampleApp"
+        Title="SampleApp" Width="540" Height="320" >
+
+  <local:SampleView />
+  
+</Window>

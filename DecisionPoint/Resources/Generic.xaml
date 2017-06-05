@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converter="clr-namespace:DecisionPoint.Converters">
+
+  <SolidColorBrush x:Key="WindowText" Color="Gray" />
+  <SolidColorBrush x:Key="WindowBackground" Color="Beige" />
+
+  <Style x:Key="TitleStyle" TargetType="{x:Type TextBlock}">
+    <Setter Property="FontWeight" Value="Bold" />
+    <Setter Property="FontSize" Value="24" />
+    <Setter Property="Foreground" Value="{DynamicResource WindowText}" />
+  </Style>
+
+  <DataTemplate x:Key="CustomerTemplate">
+    <DockPanel>
+      <TextBlock DockPanel.Dock="Left" Text="{Binding FirstName}" Width="60"  Padding="4,0,0,0" />
+      <TextBlock DockPanel.Dock="Left" Text="{Binding LastName}" Width="120" Padding="4,0,0,0" />
+      <TextBlock DockPanel.Dock="Left" Text="{Binding PostalCode}" Width="60" Padding="4,0,0,0" />
+      <Grid DockPanel.Dock="Left" />
+    </DockPanel>
+  </DataTemplate>
+
+  <converter:CollectionToErrorContent x:Key="CollectionToErrorContent" />
+
+  <ControlTemplate x:Key="ValidationErrorTemplate">
+    <Canvas>
+      <AdornedElementPlaceholder x:Name="placeholder" Canvas.Top="12"/>
+      <Border CornerRadius="3" Background="White" BorderBrush="SandyBrown" BorderThickness="1">
+        <TextBlock Foreground="IndianRed" FontSize="10" Text="{Binding ElementName=placeholder, Path=AdornedElement.(Validation.Errors), Converter={StaticResource CollectionToErrorContent}}" />
+      </Border>
+    </Canvas>
+  </ControlTemplate>
+
+</ResourceDictionary>

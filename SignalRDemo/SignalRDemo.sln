@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRHub", "SignalRDemo\SignalRHub.csproj", "{E28B1390-A8A6-493D-B7F2-1E33C02D2553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRClient", "SignalRClient\SignalRClient.csproj", "{688DD7B3-ED78-4AEA-A1B4-8CCF943EEEB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRCommon", "SignalRCommon\SignalRCommon.csproj", "{11D85EF4-68F2-4A3C-87EB-8A4076A8F402}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E28B1390-A8A6-493D-B7F2-1E33C02D2553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E28B1390-A8A6-493D-B7F2-1E33C02D2553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E28B1390-A8A6-493D-B7F2-1E33C02D2553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E28B1390-A8A6-493D-B7F2-1E33C02D2553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{688DD7B3-ED78-4AEA-A1B4-8CCF943EEEB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688DD7B3-ED78-4AEA-A1B4-8CCF943EEEB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688DD7B3-ED78-4AEA-A1B4-8CCF943EEEB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688DD7B3-ED78-4AEA-A1B4-8CCF943EEEB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D85EF4-68F2-4A3C-87EB-8A4076A8F402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D85EF4-68F2-4A3C-87EB-8A4076A8F402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D85EF4-68F2-4A3C-87EB-8A4076A8F402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D85EF4-68F2-4A3C-87EB-8A4076A8F402}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

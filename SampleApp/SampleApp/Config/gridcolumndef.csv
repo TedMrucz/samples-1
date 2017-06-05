@@ -1,0 +1,3 @@
+﻿ID,PortfolioID,30,Int
+Name,PortfolioName,100,Text
+Total,PortfolioTotal,80,Currency
