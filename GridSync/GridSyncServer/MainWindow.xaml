@@ -1,0 +1,20 @@
+﻿<Window x:Class="GridSyncServer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:local="clr-namespace:GridSyncServer"
+        Title="Server" Width="320" Height="280"> 
+
+  <Window.DataContext>
+    <local:ServerViewModel />
+  </Window.DataContext>
+
+  <i:Interaction.Triggers>
+    <i:EventTrigger EventName="Closing">
+      <i:InvokeCommandAction Command="{Binding ControlClosing}" />
+    </i:EventTrigger>
+  </i:Interaction.Triggers>
+
+  <local:ServerView Margin="8" />
+  
+</Window>

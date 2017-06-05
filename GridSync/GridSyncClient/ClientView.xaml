@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="GridSyncClient.ClientView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+             xmlns:local="clr-namespace:GridSyncClient"
+             Width="450" Height="300">
+  
+  <i:Interaction.Triggers>
+    <i:EventTrigger EventName="Loaded">
+      <i:InvokeCommandAction Command="{Binding ControlLoaded}" />
+    </i:EventTrigger>
+  </i:Interaction.Triggers>
+
+  <StackPanel>
+    <DataGrid ItemsSource="{Binding Items}" GridLinesVisibility="Horizontal" Height="120" BorderThickness="1"/>
+    <TextBlock Text="{Binding Message}" Margin="4" Height="40"/>
+    <StackPanel HorizontalAlignment="Right" >
+      <Button Content="UpdateAsyncAwait" Command="{Binding UpdateAsyncAwaitCommand}" Width="120" Margin="2"/>
+      <Button Content="UpdateAsyncTPL" Command="{Binding UpdateAsyncTplCommand}" Width="120" Margin="2"/>
+      <Button Content="UpdateAsyncDisp" Command="{Binding UpdateAsyncDispCommand}" Width="120" Margin="2"/>
+      <Button Content="UpdateAsyncThread" Command="{Binding UpdateAsyncThreadCommand2}" Width="120" Margin="2"/>
+    </StackPanel>
+  </StackPanel>
+
+</UserControl>

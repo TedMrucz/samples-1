@@ -1,0 +1,45 @@
+﻿<Window x:Class="AdornerTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:AdornerTest"
+        Title="MainWindow" Height="140" Width="340">
+
+  <Window.Resources>
+
+    <DataTemplate x:Key="LegendItemTemplate" >
+      <TextBlock Text="{Binding LegedItem}" />
+    </DataTemplate>
+
+    <ControlTemplate x:Key="PopupAdorner" >
+      <Border BorderBrush="Silver" BorderThickness="2" Background="White" >
+        <ItemsControl ItemsSource="{Binding LegendItems}" Margin="4">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <StackPanel />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+        </ItemsControl>
+      </Border>
+    </ControlTemplate>
+
+  </Window.Resources>
+
+  <Window.DataContext>
+    <local:MainWindowViewModel />
+  </Window.DataContext>
+
+  <Grid>
+    <StackPanel Orientation="Horizontal" Height="28" >
+      <ComboBox ItemsSource="{Binding LegendItems}" Width="100" Margin="4" />
+      <TextBox Text="{Binding LegendItem}" Width="100" Margin="4" />
+      <Button Command="{Binding AddCommand}" Content="Add" Width="60" Margin="4" />
+      <ToggleButton Width="20" Margin="4" >
+        <i:Interaction.Behaviors>
+          <local:ToggleButtonAdornerBehavior Content="{StaticResource PopupAdorner}" PositionX="20" PositionY="20" OffsetX="20" OffsetY="20"/>
+        </i:Interaction.Behaviors>
+      </ToggleButton>
+    </StackPanel>
+  </Grid>
+
+</Window>

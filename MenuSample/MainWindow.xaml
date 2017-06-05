@@ -1,0 +1,38 @@
+﻿<Window x:Class="MenuSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:vm="clr-namespace:MenuSample.ViewModels"
+        xmlns:ctrl="clr-namespace:MenuSample.Controls"
+        Title="MainWindow" Height="300" Width="300">
+
+  <Window.Resources>
+
+    <DataTemplate x:Key="MenuOption">
+      <TextBlock Text="{Binding Option}" Width="100" Padding="8,0,0,0"  />
+    </DataTemplate>
+
+  </Window.Resources>
+
+  <Window.DataContext>
+    <vm:MenuViewModel/>
+  </Window.DataContext>
+
+  <i:Interaction.Triggers>
+    <i:EventTrigger EventName="Loaded">
+      <i:InvokeCommandAction Command="{Binding ControlLoaded}" />
+    </i:EventTrigger>
+  </i:Interaction.Triggers>
+
+  <Grid Width="100" Height="100" Background="Beige" >
+    <Grid.ContextMenu>
+      <ContextMenu ItemsSource="{Binding Menus}" ItemTemplate="{StaticResource MenuOption}" >
+        <i:Interaction.Behaviors>
+          <ctrl:MenuBehavior />
+        </i:Interaction.Behaviors>
+      </ContextMenu>
+    </Grid.ContextMenu>
+  </Grid>
+    
+</Window>

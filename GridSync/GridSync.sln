@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridSyncServer", "GridSyncServer\GridSyncServer.csproj", "{36E3642A-817C-449B-8E07-9A1620543BA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridSyncEntity", "GridSyncEntity\GridSyncEntity.csproj", "{0FD86FAC-901A-4903-BCE7-71B7F5001C6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridSyncClient", "GridSyncClient\GridSyncClient.csproj", "{80874A3E-FABE-4CC7-AFA3-5EA1D94E4EB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36E3642A-817C-449B-8E07-9A1620543BA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36E3642A-817C-449B-8E07-9A1620543BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36E3642A-817C-449B-8E07-9A1620543BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36E3642A-817C-449B-8E07-9A1620543BA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FD86FAC-901A-4903-BCE7-71B7F5001C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FD86FAC-901A-4903-BCE7-71B7F5001C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FD86FAC-901A-4903-BCE7-71B7F5001C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FD86FAC-901A-4903-BCE7-71B7F5001C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80874A3E-FABE-4CC7-AFA3-5EA1D94E4EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80874A3E-FABE-4CC7-AFA3-5EA1D94E4EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80874A3E-FABE-4CC7-AFA3-5EA1D94E4EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80874A3E-FABE-4CC7-AFA3-5EA1D94E4EB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
