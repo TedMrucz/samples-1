@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="VGTrader.MainFrameControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:mui="http://wininsider.com/Glass.UX"
+        xmlns:local="clr-namespace:VGTrader"
+        Loaded="OnControlLoaded"
+        mc:Ignorable="d" 
+        d:DesignWidth="640" d:DesignHeight="480">
+
+  <UserControl.Resources>
+    <local:BoolToCollapse x:Key="BoolToCollapse" />
+  </UserControl.Resources>
+
+  <Grid>
+    <Grid Width="{Binding Path=Width, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" 
+          Height="{Binding Path=Height, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+      <mui:TransitioningContentControl prism:RegionManager.RegionName="MainRegion" Margin="32,0,32,54">
+        <mui:TransitioningContentControl.ContentTemplate>
+          <DataTemplate>
+            <ContentPresenter Content="{Binding View}" />
+          </DataTemplate>
+        </mui:TransitioningContentControl.ContentTemplate>
+      </mui:TransitioningContentControl>
+    </Grid>
+    <!--<ContentControl prism:RegionManager.RegionName="RegionPopup" Visibility="{Binding Path=PopupView.IsVisible, Converter={StaticResource BoolToCollapse}}"/>-->
+    <!--<Grid Width="{Binding Path=Width, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" 
+          Height="{Binding Path=Height, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+          Visibility="{Binding Path=RegionModal.IsVisible, Converter={StaticResource BoolToCollapse}}" Margin="0,-30,0,0">
+      <Rectangle Fill="Black" Opacity="0.3" />
+      <ContentControl prism:RegionManager.RegionName="RegionModal">
+        <ContentControl.ContentTemplate>
+          <DataTemplate>
+            <ContentPresenter Content="{Binding View}" />
+          </DataTemplate>
+        </ContentControl.ContentTemplate>
+      </ContentControl>
+    </Grid>
+    <ContentControl prism:RegionManager.RegionName="RegionTop" Margin="0,-30,0,0"/>-->
+  </Grid>
+  
+</UserControl>

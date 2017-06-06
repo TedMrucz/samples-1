@@ -1,0 +1,101 @@
+﻿<Window x:Class="VGTrader.LoginBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:mui="http://wininsider.com/Glass.UX"
+        xmlns:ctrl="clr-namespace:UXResources;assembly=UXResources"
+        xmlns:local="clr-namespace:VGTrader"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        BorderThickness="1"
+        BorderBrush="Gray"
+        Topmost="True"
+        WindowStartupLocation="CenterScreen"
+        Title="Glass Project" Width="380" Height="260">
+
+  <Window.Resources>
+
+    <ResourceDictionary>
+      <!--<ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/UXResources;component/Generic.xaml" />
+      </ResourceDictionary.MergedDictionaries>-->
+
+      <LinearGradientBrush x:Key="BackgroundBrush" StartPoint="0.5, 0.0" EndPoint="0.5, 1.0">
+        <LinearGradientBrush.GradientStops>
+          <GradientStop Offset="0" Color="Gainsboro"/>
+          <GradientStop Offset="1" Color="WhiteSmoke"/>
+        </LinearGradientBrush.GradientStops>
+      </LinearGradientBrush>
+
+      <LinearGradientBrush x:Key="BorderBrush" StartPoint="0.5, 0.0" EndPoint="0.5, 1.0">
+        <LinearGradientBrush.GradientStops>
+          <GradientStop Offset="0" Color="Azure"/>
+          <GradientStop Offset="1" Color="CornflowerBlue"/>
+        </LinearGradientBrush.GradientStops>
+      </LinearGradientBrush>
+
+      <LinearGradientBrush x:Key="TitleBrush" StartPoint="0, 0" EndPoint="0, 1">
+        <LinearGradientBrush.GradientStops>
+          <GradientStop Offset="0" Color="DimGray"/>
+          <GradientStop Offset="1" Color="Gainsboro"/>
+        </LinearGradientBrush.GradientStops>
+      </LinearGradientBrush>
+
+    </ResourceDictionary>
+
+  </Window.Resources>
+
+  <i:Interaction.Triggers>
+    <i:EventTrigger EventName="Loaded">
+      <i:InvokeCommandAction Command="{Binding WindowLoaded}" />
+    </i:EventTrigger>
+  </i:Interaction.Triggers>
+
+
+    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Background="{StaticResource BackgroundBrush}">
+    <Grid Width="372" Height="260">
+        <Grid Margin="4" VerticalAlignment="Top" Height="26" HorizontalAlignment="Stretch" Background="{StaticResource TitleBrush}" >
+          <Label Content="User authentication:" FontSize="14" Foreground="White"/>
+        </Grid>
+        <Grid HorizontalAlignment="Right" Margin="0,0,16,0">
+          <TextBlock Text="Glass Project" FontFamily="Arial" FontSize="28" FontWeight="Bold" FontStyle="Italic" Foreground="CornflowerBlue" Margin="-244,0,0,40" >
+          <TextBlock.LayoutTransform>
+            <RotateTransform Angle="-90" />
+          </TextBlock.LayoutTransform>
+          </TextBlock>
+          <TextBlock Text="VGS" FontFamily="Tahoma" FontSize="58" FontWeight="Bold" Foreground="White" Margin="0,14,0,0"/>
+          <TextBlock Text="version: 1.0.0.0" Margin="24,84,0,0"/>
+        </Grid>
+        <StackPanel Margin="16,34,0,0">
+          <StackPanel Orientation="Horizontal" Height="24" Margin="16,16,0,2">
+            <Label Content="Domain Name:" Width="86"/>
+            <TextBox Width="120" Text="{Binding Domain}"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Height="24" Margin="16,0,0,2">
+            <Label Content="User Name:" Width="86"/>
+            <TextBox Width="120" Text="{Binding UserName}"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Height="24" Margin="16,0,0,2">
+            <Label Content="Password:" Width="86" />
+            <PasswordBox Width="120" x:Name="password"/>
+            <CheckBox x:Name="rememberMe" Content="Remember me" Margin="24,0,0,0" VerticalAlignment="Center" />
+          </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="24" Margin="16,0,0,2">
+          <Label Content="User Role:" Width="86" />
+          <ComboBox Width="120" ItemsSource="{Binding Roles}" DisplayMemberPath="ShortDesc" SelectedValue="{Binding Role}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="24" Margin="0,8,32,4" HorizontalAlignment="Center">
+            <Button Content="Login" Width="60" IsDefault="True" Command="{Binding Login}" CommandParameter="{Binding ElementName=password}"/>
+            <Button Content="Cancel" Width="60" Margin="8,0,0,0" Command="{Binding Cancel}"/>
+          </StackPanel>
+          <StackPanel HorizontalAlignment="Center" Margin="-42,8,0,0">
+            <TextBlock Text="© 2012 Copyright VGS. All rights reserved." FontSize="7"/>
+            <TextBlock Text="This product is licensed to VGS Inc." FontSize="7" Margin="16,0,0,0"/>
+          </StackPanel>
+          <TextBlock x:Name="status" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center" Foreground="IndianRed" Width="360" Height="22" Margin="0,8,8,0"/>
+          <ctrl:LinearProgressAnimation VerticalAlignment="Bottom" IsActive="True" DotBrush="Silver" DotDiameter="4" DotCount="7" Margin="0,-8,0,4"/>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+</Window>
