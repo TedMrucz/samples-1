@@ -1,0 +1,57 @@
+﻿<cc:ViewBase x:Class="MenuHub.Views.MenuHubView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+             xmlns:prism="http://www.codeplex.com/CompositeWPF"
+             xmlns:ctrl="clr-namespace:UXResources;assembly=UXResources"
+             xmlns:cc="clr-namespace:VGTrader.Library;assembly=VGTrader.Library"
+             xmlns:mui="http://wininsider.com/Glass.UX"
+             xmlns:local="clr-namespace:MenuHub.Views">
+
+  <UserControl.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Generic.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </UserControl.Resources>
+
+  <i:Interaction.Triggers>
+    <i:EventTrigger EventName="Loaded">
+      <i:InvokeCommandAction Command="{Binding ControlLoaded}" />
+    </i:EventTrigger>
+  </i:Interaction.Triggers>
+
+  <DockPanel>
+    <StackPanel DockPanel.Dock="Bottom">
+      <StackPanel Orientation="Horizontal" Margin="2" >
+        <TextBlock Text="Color Schema:" Width="120"/>
+        <RadioButton Content="Light" Command="{Binding ColorSchema}" CommandParameter="1" Width="90"/>
+        <RadioButton Content="Dark" Command="{Binding ColorSchema}" CommandParameter="2" Width="90"/>
+        <RadioButton Content="Gray" Command="{Binding ColorSchema}" CommandParameter="3" Width="90"/>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal"  Margin="2">
+        <TextBlock Text="Highlight Color:" Width="120" />
+        <RadioButton Content="Green" Command="{Binding HighlightColor}" CommandParameter="1" Width="90"/>
+        <RadioButton Content="Blue" Command="{Binding HighlightColor}" CommandParameter="2" Width="90"/>
+        <RadioButton Content="BurlyWood" Command="{Binding HighlightColor}" CommandParameter="3" Width="90"/>
+      </StackPanel>
+    </StackPanel>
+    <Button DockPanel.Dock="Bottom" Content="Test" Command="{Binding TestCommand}" Width="100" Margin="4" />
+    <DockPanel DockPanel.Dock="Bottom" Margin="32,0,0,0">
+      <Grid DockPanel.Dock="Right" Width="180" Height="160" Background="IndianRed">
+        <Path Style="{StaticResource CIBCLogo}" Height="54" VerticalAlignment="Top" Margin="12"/>
+      </Grid>
+    </DockPanel>
+    <DockPanel DockPanel.Dock="Bottom">
+      <!--<ItemsControl DockPanel.Dock="Top" x:Name="items" ItemsSource="{Binding Path=Buttons}" ItemTemplateSelector="{StaticResource TileItemDataTemplateSelector}" VerticalAlignment="Top" >
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel HorizontalAlignment="Center" />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+      </ItemsControl>-->
+    </DockPanel> 
+  </DockPanel>
+  
+</cc:ViewBase>
