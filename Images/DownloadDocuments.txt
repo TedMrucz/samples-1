@@ -1,0 +1,75 @@
+https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-resources
+
+------------------------------------------------------
+
+EventAggregator.Instance.GetEvent<LogMessageEvent>().Publish($"Downloading documents");
+EventAggregator.Instance.GetEvent<LoginProgressEvent>().Publish("Downloading Documents...");
+
+//This code is downloading documents in multithreading with maximum speed available on client device
+//,then parallelly each document is processed when engaged all available cores from thread pool.
+//Also, there is case of using EventAggregator allowing to call methods on different classess without knowing theirs references.
+
+var downloadTasks = from document in this.Manifests.Values
+		    select new
+	            {
+			Task = base.DownloadDocument<string>(document.PlainSha256, document.ManifestEntryToken),
+			Document = document
+		    };
+
+var downloadTasksList = downloadTasks.ToArray();
+
+await Task.WhenAll(downloadTasksList.Select(d => d.Task));
+
+EventAggregator.Instance.GetEvent<LogMessageEvent>().Publish($"Start Processing");
+
+var processTasks = downloadTasksList
+		  .Where(item => !String.IsNullOrEmpty(item.Task.Result))
+		  .Select(item =>
+		  {
+		      return this.ProcessDownloadedFile(item.Document);
+	   	  })
+		  .ToArray();
+
+await Task.WhenAll(processTasks);
+
+----------------------------------------------------
+
+public Task<IList<Conversation>> GetConversations() => this.Get<IList<Conversation>>(null, "conversations");
+public Task<IList<Conversation>> GetConversation(int id) => this.Get<IList<Conversation>>(id, "conversations");
+
+public async Task<T> Post<T>(T @object, object parameters = null, string action = null)
+public async Task<T> Put<T>(T @object, object parameters = null, string action = null)
+
+public async Task<T> Get<T>(object parameters = null, string action = null)
+{
+    var path = action;
+
+    if (parameters != null)
+    {
+       var properties = parameters.GetType().GetProperties();
+       var pairs = properties.Select(p => new { Name = p.Name, Value = p.GetValue(parameters) }).Select(p => String.Concat(p.Name, "=", p.Value));
+       path += "?" + String.Join("&", pairs);
+    }
+
+    var resourceUri = $"{this.rootUri}{path}";
+
+    var filter = new HttpBaseProtocolFilter();
+    filter.IgnorableServerCertificateErrors.Add(ChainValidationResult.Expired);
+    filter.IgnorableServerCertificateErrors.Add(ChainValidationResult.Untrusted);
+    filter.IgnorableServerCertificateErrors.Add(ChainValidationResult.InvalidName);
+
+    using (var client = new HttpClient(filter))
+    {
+       client.DefaultRequestHeaders.Clear();
+       foreach (var header in this.RequestHeaders)
+       {
+           client.DefaultRequestHeaders.Add(header.Key, header.Value);
+       }
+       using (var result = await client.GetAsync(new Uri(this.rootUri, path)))
+       {
+           result.EnsureSuccessStatusCode();
+    	   return await result.Content.ReadAsAsync<T>();
+       }
+   }
+}
+
